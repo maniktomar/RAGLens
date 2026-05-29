@@ -1,0 +1,8 @@
+RAGLens Customer Support SLA
+
+Priority 1 customer incidents affect production availability or expose sensitive customer data. The support team must acknowledge Priority 1 tickets within 10 minutes and provide updates every 30 minutes until mitigation.
+
+Priority 2 incidents affect important workflows but have a workaround. The support team must acknowledge Priority 2 tickets within two business hours and provide a resolution plan within one business day.
+
+AI-generated customer replies must be reviewed by a support specialist when the ticket involves billing disputes, security incidents, legal requests, account closures, or customer data deletion.
+

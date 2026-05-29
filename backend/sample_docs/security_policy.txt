@@ -1,0 +1,7 @@
+RAGLens Security Policy
+
+Employees must use multi-factor authentication for all production systems. Privileged access is reviewed every quarter by the security team. Access for departed employees must be revoked within four hours of termination.
+
+Customer data must not be copied into unmanaged tools. Approved AI systems may process customer data only when encryption, access logging, and retention controls are enabled. Sensitive prompts and model responses are retained for audit review for 30 days.
+
+The incident response policy classifies incidents by severity. Severity 1 incidents require acknowledgement within 15 minutes, executive notification within 60 minutes, and a post-incident review within five business days.

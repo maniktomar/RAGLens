@@ -1,0 +1,8 @@
+RAGLens AI Governance Standard
+
+AI assistants must provide source citations when they answer policy, legal, security, finance, or customer-impacting questions. If the retrieved context does not contain enough evidence, the assistant must say it does not know instead of guessing.
+
+High-risk AI workflows require human review before actions are taken. Examples include account termination, refunds above 5000 USD, contract changes, security exceptions, and regulatory filings.
+
+Model usage is reviewed monthly. The review includes prompt logs, retrieval quality, hallucination reports, latency, estimated cost, and user feedback. Teams must document model changes before deploying them to production.
+

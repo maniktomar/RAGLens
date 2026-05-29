@@ -1,0 +1,6 @@
+RAGLens Employee Onboarding Guide
+
+New engineers receive access to source control, issue tracking, staging infrastructure, and the internal knowledge base during their first week. Production access requires manager approval, security training, and completion of the access request form.
+
+The first 30 days focus on product architecture, development workflow, and shadowing customer escalations. By day 60, engineers should own small features. By day 90, engineers should participate in on-call rotations if their team owns production services.
+
