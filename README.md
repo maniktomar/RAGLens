@@ -1,113 +1,27 @@
-# RAGLens
+<div align="center">
 
-Production-style RAG assistant with persistent document indexing, source-grounded answers, agent traceability, guardrails, and an LLM evaluation dashboard.
+<img src="https://raw.githubusercontent.com/maniktomar/RAGLens/main/frontend/public/vite.svg" width="100" alt="RAGLens Logo" />
 
-![Status](https://img.shields.io/badge/status-working_v1-1f7a8c)
-![Stack](https://img.shields.io/badge/stack-React_%2B_FastAPI-14213d)
-![Focus](https://img.shields.io/badge/focus-GenAI_RAG-e76f51)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=30&pause=1000&color=1F7A8C&center=true&vCenter=true&width=500&lines=RAGLens;Enterprise+Knowledge+Assistant;Built+with+FastAPI+%26+React)](https://git.io/typing-svg)
 
-## Why This Project Is Recruiter-Friendly
+**Production-style RAG assistant with persistent document indexing, source-grounded answers, agent traceability, guardrails, and an LLM evaluation dashboard.**
 
-Most GenAI portfolio projects stop at a PDF chatbot. RAGLens adds the parts companies care about in production: persistence, retrieval transparency, answer confidence, citation coverage, hallucination risk, latency, cost visibility, prompt-injection guardrails, and RAG evaluation.
+![Status](https://img.shields.io/badge/status-working_v1-1f7a8c?style=for-the-badge&logo=github)
+![Stack](https://img.shields.io/badge/stack-React_%2B_FastAPI-14213d?style=for-the-badge&logo=react)
+![Focus](https://img.shields.io/badge/focus-GenAI_RAG-e76f51?style=for-the-badge&logo=openai)
 
-## Features
+</div>
 
-- Upload `.txt`, `.md`, `.pdf`, `.docx`, and `.csv` knowledge files.
-- Chunk and index documents for retrieval.
-- Persist documents and chunks in SQLite so the knowledge base survives backend restarts.
-- Store chunk vectors in ChromaDB.
-- Use deterministic local embeddings by default, with optional OpenAI embeddings for stronger semantic search.
-- Ask questions through a polished chat interface.
-- Return grounded answers with visible source chunks.
-- Show an agent trace for guardrail, retrieval, reranking, generation, and evaluation steps.
-- Block common prompt-injection attempts.
-- Track confidence, citation coverage, retrieval relevance, hallucination risk, latency, token estimate, and cost estimate.
-- Run a built-in RAG evaluation suite against expected answers.
-- Keep a query history for auditing.
-- Load demo documents with one click.
-- Export an answer report as Markdown.
-- Works without an API key using extractive answers.
-- Uses OpenAI automatically when `OPENAI_API_KEY` is configured.
+---
 
-## Architecture
+## 🚀 Why RAGLens?
 
-```text
-React UI
-  |
-  | REST
-  v
-FastAPI backend
-  |
-  | parse, chunk, persist, index
-  v
-SQLite metadata + chunk store
-  |
-  | ChromaDB vector retrieval + lexical reranking
-  v
-Agentic RAG pipeline
-  |
-  | optional generation
-  v
-OpenAI model
-```
+Most GenAI portfolio projects stop at a simple PDF chatbot. **RAGLens** adds the critical components companies actually care about in production: 
 
-The local version uses SQLite for metadata persistence and ChromaDB for persistent vector retrieval. By default, it uses deterministic local embeddings so the project runs without paid APIs. Set `USE_OPENAI_EMBEDDINGS=true` with a valid `OPENAI_API_KEY` to use OpenAI semantic embeddings.
+*Persistence • Retrieval Transparency • Answer Confidence • Citation Coverage • Hallucination Risk • Latency & Cost Tracking • Prompt-Injection Guardrails • RAG Evaluation*
 
-## Run Locally
-
-### Docker Compose
-
-```powershell
-cd C:\Users\manik\OneDrive\Documents\Playground\raglens
-docker compose up --build
-```
-
-Open `http://localhost:8080`.
-
-The backend API is available at `http://localhost:8001`.
-
-Optional OpenAI usage in Docker:
-
-```powershell
-$env:OPENAI_API_KEY="your_key_here"
-$env:USE_OPENAI_EMBEDDINGS="true"
-docker compose up --build
-```
-
-Never run `docker compose config` in a public screen recording if API key environment variables are set, because Compose prints resolved environment values.
-
-### Backend
-
-```powershell
-cd backend
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-copy .env.example .env
-uvicorn app.main:app --reload
-```
-
-Optional: add `OPENAI_API_KEY` in `backend/.env`.
-
-For OpenAI semantic embeddings:
-
-```env
-OPENAI_API_KEY=your_key_here
-USE_OPENAI_EMBEDDINGS=true
-OPENAI_EMBEDDING_MODEL=text-embedding-3-small
-```
-
-### Frontend
-
-```powershell
-cd frontend
-npm install
-npm run dev
-```
-
-Open `http://localhost:5173`.
-
-## Demo Flow
+<details>
+<summary><b>🎬 Click to expand Demo Flow</b></summary>
 
 1. Start the backend and frontend.
 2. Click `Load sample docs`, or upload files from `backend/sample_docs`.
@@ -119,46 +33,94 @@ Open `http://localhost:5173`.
 5. Inspect the agent trace to see guardrail, retrieval, reranking, generation, and evaluation steps.
 6. Click `Run RAG eval` to run the built-in evaluation suite.
 7. Click `Export` to generate a Markdown answer report.
+</details>
 
-## Demo Tips
+---
 
-- Use the reset button in the Knowledge Base panel before recording a clean demo.
-- Upload at least three sample documents so the dashboard demonstrates retrieval across multiple sources.
-- Add an OpenAI key in `backend/.env` for synthesized answers; without a key, the app still works with extractive source-grounded answers.
+## ✨ Interactive Features
 
-## Suggested Next Upgrades
+| 🧠 Knowledge Core | 🛡️ Trust & Safety | 📊 Observability |
+|:---|:---|:---|
+| 📄 Upload `.txt`, `.md`, `.pdf`, `.docx`, and `.csv` | 🛑 Blocks prompt-injection attempts | ⏱️ Tracks latency & token estimates |
+| 🗄️ SQLite metadata & ChromaDB vector storage | 🔍 Visible source chunk citations | 💰 Cost estimation dashboard |
+| 🔀 Local deterministic or OpenAI embeddings | 📉 Tracks hallucination & risk scores | 🤖 Agent execution traces |
+| ⚡ Lexical reranking for precise retrieval | ✅ Built-in RAG evaluation suite | 💾 Markdown export & query history |
 
-- PostgreSQL + pgvector for multi-user production deployment.
-- Cross-encoder reranking for stronger retrieval precision.
-- Auth and workspace-level document isolation.
-- Larger ground-truth evaluation sets.
-- PDF report export.
-- Docker Compose deployment.
-- CI tests for ingestion, retrieval, and answer evaluation.
+---
 
-## Resume Bullets
+## 🛠️ Quick Start
 
-- Built a full-stack enterprise RAG assistant with FastAPI, React, persistent document indexing, ChromaDB vector retrieval, reranking, source citations, and query history.
-- Added an evaluation dashboard that tracks confidence, citation coverage, retrieval relevance, hallucination risk, latency, token estimates, cost, and benchmark pass rate.
-- Implemented prompt-injection guardrails and an agent trace showing guardrail, retrieval, reranking, generation, and evaluation stages.
-- Designed recruiter-friendly demo workflows with one-click sample data loading and Markdown report export.
+You can run RAGLens locally using Docker or manually via the terminal.
 
-## Project Structure
+### 🐳 The Easy Way (Docker Compose)
 
-```text
-raglens/
-  docker-compose.yml
-  backend/
-    Dockerfile
-    app/
-      main.py      # FastAPI routes
-      rag.py       # parsing, chunking, retrieval, generation, evaluation
-      schemas.py   # API response models
-    sample_docs/   # demo knowledge base
-  frontend/
-    Dockerfile
-    nginx.conf
-    src/
-      main.tsx     # React app
-      styles.css   # dashboard styling
+```bash
+git clone https://github.com/maniktomar/RAGLens.git
+cd RAGLens
+docker compose up --build
 ```
+> 🌐 **App:** `http://localhost:8080` | **API:** `http://localhost:8001`
+
+*(Want OpenAI-powered generation? Add your API key before running):*
+```powershell
+$env:OPENAI_API_KEY="sk-your_key_here"
+$env:USE_OPENAI_EMBEDDINGS="true"
+docker compose up --build
+```
+
+### 💻 Manual Setup
+
+<details>
+<summary><b>Backend Setup (FastAPI)</b></summary>
+
+```bash
+cd backend
+python -m venv .venv
+# Activate environment (Windows)
+.\.venv\Scripts\Activate.ps1
+# Activate environment (Mac/Linux)
+source .venv/bin/activate
+
+pip install -r requirements.txt
+cp .env.example .env
+uvicorn app.main:app --reload
+```
+</details>
+
+<details>
+<summary><b>Frontend Setup (React)</b></summary>
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Open `http://localhost:5173`.
+</details>
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+graph TD;
+    UI[🖥️ React UI] -->|REST API| API[⚡ FastAPI Backend]
+    API -->|Parse & Chunk| DB[(🗄️ SQLite Metadata)]
+    API -->|Embed & Retrieve| VEC[(📊 ChromaDB Vectors)]
+    VEC -->|Lexical Reranking| AGENT[🤖 Agentic RAG Pipeline]
+    AGENT -->|Optional Gen| LLM[🧠 OpenAI Model]
+```
+
+*The local version uses deterministic local embeddings so the project runs 100% free without paid APIs. Set `USE_OPENAI_EMBEDDINGS=true` with a valid `OPENAI_API_KEY` to unlock semantic embeddings.*
+
+---
+
+## 💼 Resume Bullets
+
+- **Enterprise Stack:** Built a full-stack enterprise RAG assistant with FastAPI, React, persistent document indexing, ChromaDB vector retrieval, reranking, source citations, and query history.
+- **Analytics & Observability:** Added an evaluation dashboard that tracks confidence, citation coverage, retrieval relevance, hallucination risk, latency, token estimates, cost, and benchmark pass rate.
+- **AI Safety:** Implemented prompt-injection guardrails and an agent trace showing guardrail, retrieval, reranking, generation, and evaluation stages.
+
+<div align="center">
+  <i>Built by Manik Tomar</i>
+</div>
